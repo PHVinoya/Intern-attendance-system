@@ -1,170 +1,47 @@
+const date = document.getElementById("date");
+const time = document.getElementById("time");
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Poppins,sans-serif;
-}
+function updateClock(){
 
-body{
+    const now = new Date();
 
-    background:#f4f7fb;
-    color:#333;
-}
+    date.innerHTML = now.toDateString();
 
-header{
-
-    background:#1565C0;
-    color:white;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:20px 50px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    time.innerHTML = now.toLocaleTimeString();
 
 }
 
-main{
+setInterval(updateClock,1000);
 
-    max-width:1200px;
-    margin:40px auto;
-    padding:20px;
+updateClock();
 
-    display:grid;
-    grid-template-columns:350px 1fr;
-    gap:25px;
+const scanBtn = document.getElementById("scanBtn");
 
-}
+const status = document.getElementById("status");
 
-.scanner-card,
-.status-card,
-.table-card{
+const table = document.getElementById("attendanceTable");
 
-    background:white;
-    border-radius:15px;
-    padding:25px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+scanBtn.onclick = ()=>{
 
-}
+    status.innerHTML="Scanning...";
 
-.status-card{
+    setTimeout(()=>{
 
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+        status.innerHTML="Attendance Recorded ✅";
 
-}
+        const row=`
+        <tr>
+            <td>Juan Dela Cruz</td>
+            <td>2025001</td>
+            <td>${new Date().toLocaleTimeString()}</td>
+            <td style="color:green;font-weight:bold;">
+                Present
+            </td>
+        </tr>
+        `;
 
-.scanner{
+        table.innerHTML=row+table.innerHTML;
 
-    margin:25px 0;
-    height:250px;
-    border:3px dashed #1565C0;
+    },2000);
 
-    border-radius:12px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-}
-
-.camera-placeholder{
-
-    font-size:90px;
-
-}
-
-button{
-
-    width:100%;
-    padding:15px;
-
-    border:none;
-    border-radius:10px;
-
-    background:#1565C0;
-    color:white;
-
-    font-size:17px;
-    cursor:pointer;
-
-}
-
-button:hover{
-
-    background:#0D47A1;
-
-}
-
-#status{
-
-    font-size:20px;
-    color:#1565C0;
-    font-weight:600;
-
-}
-
-.table-card{
-
-    grid-column:span 2;
-
-}
-
-table{
-
-    width:100%;
-    border-collapse:collapse;
-    margin-top:20px;
-
-}
-
-th{
-
-    background:#1565C0;
-    color:white;
-    padding:15px;
-
-}
-
-td{
-
-    padding:14px;
-    text-align:center;
-    border-bottom:1px solid #eee;
-
-}
-
-tr:hover{
-
-    background:#f8f9fa;
-
-}
-
-@media(max-width:900px){
-
-    main{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .table-card{
-
-        grid-column:span 1;
-
-    }
-
-    header{
-
-        flex-direction:column;
-        gap:10px;
-        text-align:center;
-
-    }
-
-      }
+};

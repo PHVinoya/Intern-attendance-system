@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Attendance System</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<header>
+
+    <div class="logo">
+        <h2>📷 QR Attendance</h2>
+    </div>
+
+    <div class="datetime">
+        <h3 id="date"></h3>
+        <span id="time"></span>
+    </div>
+
+</header>
+
+<main>
+
+    <section class="scanner-card">
+
+        <h2>Scan QR Code</h2>
+
+        <div class="scanner">
+
+            <div class="camera-placeholder">
+                📷
+            </div>
+
+        </div>
+
+        <button id="scanBtn">
+            Start Scanner
+        </button>
+
+    </section>
+
+
+    <section class="status-card">
+
+        <h2>Attendance Status</h2>
+
+        <div id="status">
+            Waiting for QR Scan...
+        </div>
+
+    </section>
+
+
+    <section class="table-card">
+
+        <h2>Recent Attendance</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="attendanceTable">
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
